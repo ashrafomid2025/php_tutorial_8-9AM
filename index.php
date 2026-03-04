@@ -38,6 +38,7 @@ if(isset($_GET["text"])){
             border: 1px solid black;
             text-align: center;
         }
+        /* create, read , update, delete */
     </style>
 </head>
 <body>

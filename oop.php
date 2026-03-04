@@ -1,30 +1,48 @@
 <?php
 
-
-// add friend, post
-// username, email
-
-class User{
-   public $username ;
-   public $email;
-
-   public function __construct($name,$email){
-    $this->username = $name;
-    $this->email = $email;
+class Animal{
+   private $name;
+   private $age;
+   
+   public function __construct($nam, $sin){
+      $this->name = $nam;
+      $this->age = $sin;
    }
   
-
-   public function post(){
-    return "$this->username posted something";
+   public function eat(){
+      return "$this->name can eat something";
    }
-   public function addFriend(){
-     return "$this->username added a friend";
+   public function drink(){
+      return "$this->name can drink";
+   }
+   public function setName($name){
+      $this->name = $name;
+   }
+   public function getName(){
+      return $this->name;
    }
 }
 
-$userOne = new User('aliahmadi','email@example.com');
+$animalNo1 = new Animal("Cat", 3);
+// echo $animalNo1->getName();
 
-$userTwo = new User('freshta2026','freshta@example.com');
+class Human extends Animal{
+   private $degreeOfEducation;
+   private $lastName;
+   public function __construct($name,$age, $degree, $lastName){
+      $this->degreeOfEducation = $degree;
+      $this->lastName = $lastName;
+      parent::__construct($name,$age);
+   }
+   // override
+   public function Think(){
+      return "Human can think";
+   }
 
-echo $userTwo->post(). "<br>";
-echo $userOne->post();
+
+}
+
+$person1 =new Human("Ali",23,12,"Ahmadi");
+$person1->setName("Aliullah");
+echo $person1->getName();
+// echo $person1->Think();
