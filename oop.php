@@ -39,3 +39,4 @@ class AdminUser extends User{
 }
 
 AdminUser::deleteUser();
+
