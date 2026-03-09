@@ -3,7 +3,9 @@ date_default_timezone_set("Asia/Kabul");
 $time = date('H:i:s');
 
 $date = new DateTime();
-$date->modify('+3 weeks');
+$date->modify('+1 year');
+$interval = new DateInterval('P1M');
+$date->add($interval);
 echo $date->format("Y-m-d")
 ?>
 <!DOCTYPE html>
