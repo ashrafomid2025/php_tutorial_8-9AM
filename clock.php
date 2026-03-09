@@ -1,50 +1,64 @@
-<?php
+<?php 
 date_default_timezone_set("Asia/Kabul");
-$time = date('H:i:s');
+$now = new DateTime();
+$now = $now->format('H:i:s');
 
-$date = new DateTime();
-$date->modify('+1 year');
-$interval = new DateInterval('P1M');
-$date->add($interval);
-echo $date->format("Y-m-d")
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Clock</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box{
+            padding: 20px;
+            border: 1px solid black;
+            border-radius: 12px;
+        }
+    </style>
 </head>
 <body>
-    <div>live clock</div>
-    <div id="clock"></div>
+     <div class="container">
+        <div class="box" id="clock"></div>
+     </div>
 
-    <script>
-        let time = "<?php echo $time; ?>".split(":");
-        let h = parseInt(time[0]);
-        let m = parseInt(time[1]);
-        let s = parseInt(time[2]);
-        function updateClock(){
-            s++;
-            if(s==60){
-                s=0;
-                m++;
+     <script>
+        let now = "<?php echo $now ?>".split(":");
+        let hour = parseInt(now[0]);
+        let minute = parseInt(now[1]);
+        let second = parseInt(now[2]);
+        function showClock(){
+            second++;
+            if(second === 60){
+                second=0;
+                minute++;
             }
-            if(m==60){
-                m=0;
-                h++;
+            if(minute ===60){
+                minute=0;
+                hour++;
             }
-            if(h==24){
-                h=0;
+            if(hour ===24){
+                hour =0
             }
 
-            document.getElementById("clock").innerHTML =
-            String(h).padStart(2,'0')+ ":"+
-            String(m).padStart(2,'0')+":"+
-            String(s).padStart(2,'0');
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
+            document.getElementById("clock").innerHTML = 
+            String(hour).padStart(2,"0")+":"+ String(minute).padStart(2,"0")+":"+String(second).padStart(2,"0")
+        } 
+        setInterval(showClock, 1000); 
+        showClock();
     </script>
 </body>
 </html>
