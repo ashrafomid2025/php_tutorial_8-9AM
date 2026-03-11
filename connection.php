@@ -1,30 +1,17 @@
 <?php
-class DBConnection{
-    private $hostname = "localhost";
-    private $dbname = "testing_db";
-    private $username = "root";
-    private $password = "";
-    
+$host = "localhost";
+$datatbasename = "testing_db";
+$username = "root";
+$password = "";
 
-    public function connect(){
-     try{
-      $dbsource = "mysql:host=".$this->hostname.";dbname=".$this->dbname.";"; 
-      $connect =  new PDO($dbsource,$this->username, $this->password);
-      echo "db connected us successfully";
-      return $connect;
-     }
-    //  postman, testing api,
-     catch(Exception $e){
-        echo "something went wrong". $e->getMessage();
-     }
-      }
-    // public function __construct($hostname, $dbname, $username, $password)
-    // {
-    //     $this->hostname = $hostname;
-    //     $this->dbname = $dbname;
-    //     $this->password = $password;
-    //     $this->username = $username;        
-    // }
+try{
+    $dbs = "mysql:port=".$host. ";dbname=".$datatbasename.";";
+  $connect =  new PDO($dbs, $username,$password);
+ 
+  return $connect;
 }
-$db = new DBConnection();
-$db->connect();
+catch(Exception $error){
+    echo $error->getMessage();
+}
+
+?>
