@@ -4,7 +4,7 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
    $name =  $_POST["name"];
    $lastname =  $_POST["lastname"];
    $class =  $_POST["class"];
-   $query = "INSERyT INTO students(name,lastname,class) VALUES(:name,:lastname,:class)";
+   $query = "INSERT INTO students(name,lastname,class) VALUES(:name,:lastname,:class)";
    $statement = $connect->prepare($query);
     $statement->execute([
         ":name"=>$name,
