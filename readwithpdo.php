@@ -48,6 +48,7 @@ require_once "connection.php";
                 <th>Name</th>
                 <th>Last Name</th>
                 <th>Class</th>
+                <th>Update</th>
             </tr>
             <?php 
             $query = "SELECT * FROM students";
@@ -60,6 +61,7 @@ require_once "connection.php";
       <td><?php echo $row["name"] ?></td>
       <td><?php echo $row["lastname"] ?></td>
       <td><?php echo $row["class"] ?></td>
+      <td><a href="<?php echo 'updatewithpdo.php?id='.$row["id"] ?>">Update</a></td>
 </tr>
         <?php
            }
